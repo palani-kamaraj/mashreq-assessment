@@ -1,5 +1,6 @@
 import i18next from "i18next";
 import { initReactI18next } from "react-i18next";
+import { ILanguageOptions } from '@types';
 
 /* eslint-disable */
 const en_common = require('./locales/en.json');
@@ -10,17 +11,17 @@ i18next.use(initReactI18next)
 
 export const i18nOptions = {
   resources: {
-    en: {
+    [ILanguageOptions.EN]: {
       translation: en_common,
     },
-    ar: {
+    [ILanguageOptions.AR]: {
       translation: ar_common,
     },
-    ta: {
+    [ILanguageOptions.TA]: {
       translation: ta_common,
     },
   },
-  fallbackLng: 'en',
+  fallbackLng: ILanguageOptions.EN,
   ns: ['translation'],
   interpolation: {
     escapeValue: false,

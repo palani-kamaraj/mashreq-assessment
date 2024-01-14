@@ -1,3 +1,19 @@
 {
-    "title": "Mobile App"
+    "title": "Mobile App",
+    "lang": {
+        "options": {
+            "english": "English",
+            "arabic": "عربي",
+            "tamil": "தமிழ்"
+        }
+    },
+    "actions": {
+        "login": "Login"
+    },
+    "screen": {
+        "login": {
+            "username": "Username",
+            "password": "Password"
+        }
+    }
 }

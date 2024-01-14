@@ -15,8 +15,10 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
+      "@mobileLib": ["libs/mobile/src/index.ts"],
       "@shared": ["libs/shared/src/index.ts"],
-      "@mobileLib": ["libs/mobile/src/index.ts"]
+      "@types": ["libs/types/src/index.ts"],
+      "@webLib": ["libs/web/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]
