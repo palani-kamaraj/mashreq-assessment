@@ -26,18 +26,6 @@
       "sha1": "c8f62e1c286dd49ac9db7c91b887ffcbdbba171b"
     },
     {
-      "path": "src/assets/fonts/NotoSans_Condensed-Medium.ttf",
-      "sha1": "e0237f7bb0a21235fc715ba68ee049b80ab30386"
-    },
-    {
-      "path": "src/assets/fonts/NotoSans_Condensed-Regular.ttf",
-      "sha1": "e8da78b2c0105dfe4d76bba6baf2f298746eaaf9"
-    },
-    {
-      "path": "src/assets/fonts/NotoSans_Condensed-SemiBold.ttf",
-      "sha1": "c32f4b8274e6b69f37c285aa14f8a8e187d29a20"
-    },
-    {
       "path": "src/assets/fonts/Roboto-Bold.ttf",
       "sha1": "62442a18a9fe9457c1afeabf683d263a691b7798"
     },
