@@ -1,4 +1,4 @@
-import { i18nConfig, i18nOptions } from '@lib-shared';
+import { i18nConfig, i18nOptions } from '@shared';
 
 i18nConfig.init({
   ...i18nOptions,

@@ -1,0 +1,53 @@
+{
+  "migIndex": 1,
+  "data": [
+    {
+      "path": "src/assets/fonts/NotoKufiArabic-Medium.ttf",
+      "sha1": "c60056f52c67618270b9af0f56c751059b7ab49f"
+    },
+    {
+      "path": "src/assets/fonts/NotoKufiArabic-Regular.ttf",
+      "sha1": "7de76d2fd2cfc4c8b1ee02cc6b72f1cdeb8f33ab"
+    },
+    {
+      "path": "src/assets/fonts/NotoKufiArabic-SemiBold.ttf",
+      "sha1": "68f34d0f9e2ed97b188e0a1e0197a5afd230d513"
+    },
+    {
+      "path": "src/assets/fonts/NotoSansTamil_Condensed-Medium.ttf",
+      "sha1": "c41c0c591c4febeeb78a704286fb4f32c777f447"
+    },
+    {
+      "path": "src/assets/fonts/NotoSansTamil_Condensed-Regular.ttf",
+      "sha1": "cfceb5786f679d9aed49ebedbb3ef4d9ec00c68e"
+    },
+    {
+      "path": "src/assets/fonts/NotoSansTamil_Condensed-SemiBold.ttf",
+      "sha1": "c8f62e1c286dd49ac9db7c91b887ffcbdbba171b"
+    },
+    {
+      "path": "src/assets/fonts/NotoSans_Condensed-Medium.ttf",
+      "sha1": "e0237f7bb0a21235fc715ba68ee049b80ab30386"
+    },
+    {
+      "path": "src/assets/fonts/NotoSans_Condensed-Regular.ttf",
+      "sha1": "e8da78b2c0105dfe4d76bba6baf2f298746eaaf9"
+    },
+    {
+      "path": "src/assets/fonts/NotoSans_Condensed-SemiBold.ttf",
+      "sha1": "c32f4b8274e6b69f37c285aa14f8a8e187d29a20"
+    },
+    {
+      "path": "src/assets/fonts/Roboto-Bold.ttf",
+      "sha1": "62442a18a9fe9457c1afeabf683d263a691b7798"
+    },
+    {
+      "path": "src/assets/fonts/Roboto-Medium.ttf",
+      "sha1": "3c6a09fcc6a454924c81af7dff94fc6d399ed79b"
+    },
+    {
+      "path": "src/assets/fonts/Roboto-Regular.ttf",
+      "sha1": "56c5c0d38bde4c1f1549dda43db37b09c608aad3"
+    }
+  ]
+}

@@ -16,6 +16,9 @@
     "react-native-svg-transformer": "*",
     "tslib": "*",
     "intl-pluralrules": "*",
-    "react-native-splash-screen": "*"
+    "react-native-splash-screen": "*",
+    "react-native-safe-area-context": "*",
+    "react-native-paper": "*",
+    "react-native-restart": "*"
   }
 }
