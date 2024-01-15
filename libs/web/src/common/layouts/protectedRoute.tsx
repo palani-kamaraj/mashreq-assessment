@@ -3,7 +3,7 @@ import { Navigate } from 'react-router-dom';
 import { useStore } from '@shared';
 
 export const ProtectedRoute = ({ children }: { children: React.JSX.Element }) => {
-  const isUserLoggedIN = useStore((state) => state?.user?.lang);
+  const isUserLoggedIN = useStore((state) => state?.user);
 
   if (isUserLoggedIN) {
     return children;

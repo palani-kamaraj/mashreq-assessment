@@ -51,7 +51,7 @@ export const LanguageMenu = () => {
           );
         })}
       </Menu>
-      <Box display="flex" alignItems="center" onClick={handleProfileMenuOpen}>
+      <Box sx={{cursor: 'pointer'}} display="flex" alignItems="center" onClick={handleProfileMenuOpen}>
         <Typography component="span" variant="body1">
           {currentLanguageLabel}
         </Typography>

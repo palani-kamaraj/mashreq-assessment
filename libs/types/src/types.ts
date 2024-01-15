@@ -1,18 +1,22 @@
 import { IThemeOptions } from './enum';
 
 export interface ICountryType {
-  value: string;
+  code: IThemeOptions;
+  value: IThemeOptions;
   label: string;
 }
 
 export interface IUserType {
-  name: string;
-  lang: IThemeOptions;
-  createdOn: string;
+  id?: string;
+  username: string;
+  password: string;
+  country: IThemeOptions;
+  createdOn?: string;
+  updatedOn?: string;
 }
 
 export interface ILoginFormField {
-  country: IThemeOptions | null;
+  country: ICountryType | undefined;
   username: string;
   password: string;
 }

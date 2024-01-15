@@ -13,10 +13,26 @@ export const useLang = () => {
   ];
 
   const countryOptions: ICountryType[] = [
-    { value: IThemeOptions.AE, label: t('screen.login.countryOptions.ae') },
-    { value: IThemeOptions.IN, label: t('screen.login.countryOptions.in') },
-    { value: IThemeOptions.LK, label: t('screen.login.countryOptions.lk') },
-    { value: IThemeOptions.PK, label: t('screen.login.countryOptions.pk') },
+    {
+      value: IThemeOptions.AE, // used in native
+      code: IThemeOptions.AE, // used in web
+      label: t('screen.login.countryOptions.ae'),
+    },
+    {
+      value: IThemeOptions.IN,
+      code: IThemeOptions.IN,
+      label: t('screen.login.countryOptions.in'),
+    },
+    {
+      value: IThemeOptions.LK,
+      code: IThemeOptions.LK,
+      label: t('screen.login.countryOptions.lk'),
+    },
+    {
+      value: IThemeOptions.PK,
+      code: IThemeOptions.PK,
+      label: t('screen.login.countryOptions.pk'),
+    },
   ];
 
   const changeLanguage = (lang: ILanguageOptions, onSuccess?: () => void) => {
