@@ -1,11 +1,14 @@
 import i18next from "i18next";
 import { initReactI18next } from "react-i18next";
 import { ILanguageOptions } from '@types';
+import { storeState } from "../store";
 
 /* eslint-disable */
 const en_common = require('./locales/en.json');
 const ar_common = require('./locales/ar.json');
 const ta_common = require('./locales/ta.json');
+
+const currentLanguage = storeState.lang;
 
 i18next.use(initReactI18next)
 
@@ -27,6 +30,7 @@ export const i18nOptions = {
     escapeValue: false,
   },
   defaultNS: 'translation',
+  lng: currentLanguage,
 };
 
 export const i18nConfig = i18next;

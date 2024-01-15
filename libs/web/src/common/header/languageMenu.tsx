@@ -1,23 +1,21 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Box, IconButton, Menu, MenuItem, Typography } from '@mui/material';
-import { useLang } from '@shared';
+import { useLang, useStore } from '@shared';
 import { ILanguageOptions } from '@types';
 import { Language } from '@mui/icons-material';
 
 export const LanguageMenu = () => {
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
-  const [selectedLang, setSelectedLang] = useState<ILanguageOptions>(
-    ILanguageOptions.EN
-  );
-  const { options } = useLang();
+  const selectedLang = useStore((state)=>state.lang);
+  const { options, changeLanguage } = useLang();
   const currentLanguageLabel =
     options.find((lang) => lang.value === selectedLang)?.label || '';
   const isMenuOpen = Boolean(anchorEl);
 
   const handleMenuClose = (value: ILanguageOptions) => {
     setAnchorEl(null);
-    if (value && typeof value === 'string' ) {
-      setSelectedLang(value);
+    if (value && typeof value === 'string') {
+      changeLanguage(value);
     }
   };
 
@@ -53,7 +51,7 @@ export const LanguageMenu = () => {
           );
         })}
       </Menu>
-      <Box display='flex' alignItems='center' onClick={handleProfileMenuOpen}>
+      <Box display="flex" alignItems="center" onClick={handleProfileMenuOpen}>
         <Typography component="span" variant="body1">
           {currentLanguageLabel}
         </Typography>
