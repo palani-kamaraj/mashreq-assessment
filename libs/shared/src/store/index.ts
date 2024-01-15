@@ -1,6 +1,8 @@
+import AsyncStorage from '@react-native-async-storage/async-storage';
 import { StateCreator, create } from 'zustand';
-import { devtools, persist } from 'zustand/middleware';
+import { createJSONStorage, persist } from 'zustand/middleware';
 import { ILanguageOptions, IThemeOptions, IUserType } from '@types';
+import { Platform } from 'react-native';
 
 interface IStore {
   lang: ILanguageOptions;
@@ -17,11 +19,12 @@ const store: StateCreator<IStore> = (set) => ({
 });
 
 export const useStore = create<IStore>()(
-  devtools(
-    persist(store, {
-      name: 'store',
-    })
-  )
+  persist(store, {
+    name: 'store',
+    storage: createJSONStorage(() =>
+      Platform.OS === 'web' ? localStorage : AsyncStorage
+    ),
+  })
 );
 
 export const storeState = useStore.getState();

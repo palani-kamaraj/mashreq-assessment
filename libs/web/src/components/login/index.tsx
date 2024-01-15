@@ -1,10 +1,8 @@
 import React from 'react';
-import { useTranslation } from 'react-i18next';
-import { Box, Button, TextField } from '@mui/material';
-import CountrySelect from '../../common/countrySelect';
+import { Box } from '@mui/material';
+import LoginForm from './loginForm';
 
 export const Login = () => {
-  const { t } = useTranslation();
   return (
     <Box
       sx={{
@@ -36,34 +34,7 @@ export const Login = () => {
             />
           </Box>
         </Box>
-        <Box sx={{ mt: 1 }}>
-          <CountrySelect />
-          <TextField
-            margin="normal"
-            required
-            fullWidth
-            id="username"
-            label={t('screen.login.username')}
-            name="username"
-          />
-          <TextField
-            margin="normal"
-            required
-            fullWidth
-            name="password"
-            label={t('screen.login.password')}
-            type="password"
-            id="password"
-          />
-          <Button
-            type="submit"
-            fullWidth
-            variant="contained"
-            sx={{ mt: 3, mb: 2 }}
-          >
-            {t('actions.login')}
-          </Button>
-        </Box>
+        <LoginForm />
       </Box>
     </Box>
   );

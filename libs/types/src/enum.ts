@@ -10,3 +10,8 @@ export enum IThemeOptions {
   LK = 'lk',
   PK = 'pk',
 }
+
+export enum IOrientationType {
+  PORTRAIT = 'PORTRAIT',
+  LANDSCAPE = 'LANDSCAPE'
+}
