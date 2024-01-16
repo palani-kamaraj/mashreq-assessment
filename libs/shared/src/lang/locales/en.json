@@ -23,6 +23,7 @@
             },
             "error": {
                 "invalidUser": "Please enter a valid username or password",
+                "userNameAlreadyExists": "Entered username is already exists.",
                 "country": "Please select country from the list.",
                 "username": {
                     "required": "Username cannot be empty. Please enter your chosen username.",

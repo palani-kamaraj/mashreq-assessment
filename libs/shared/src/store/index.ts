@@ -32,29 +32,31 @@ const store: StateCreator<IStore> = (set) => ({
   invalidUserMessage: '',
   setLang: (val: ILanguageOptions) => set(() => ({ lang: val })),
   setUser: (val: IUserType, success: () => void) => {
-    set(() => ({ isLoading: true }));
+    set(() => ({ isLoading: true, invalidUserMessage: '' }));
     fSaveUser(
       val,
       () => {
-        set(() => ({ user: val, invalidUserMessage: '', isLoading: false }));
+        set(() => ({ user: { ...val, password: '' }, isLoading: false }));
         if (success) {
           success();
         }
       },
-      () => {
+      (code?: string) => {
         set(() => ({
-          invalidUserMessage: i18n.t('screen.login.error.invalidUser'),
+          invalidUserMessage: i18n.t(
+            `screen.login.error.${code === 'USER_EXISTS' ? 'userNameAlreadyExists' : 'invalidUser'}`
+          ),
           isLoading: false,
         }));
       }
     );
   },
   getUser: (val: IUserType, success: () => void) => {
-    set(() => ({ isLoading: true }));
+    set(() => ({ isLoading: true, invalidUserMessage: '' }));
     fGetUser(
       val,
       () => {
-        set(() => ({ user: val, invalidUserMessage: '', isLoading: false }));
+        set(() => ({ user: { ...val, password: '' }, isLoading: false }));
         if (success) {
           success();
         }

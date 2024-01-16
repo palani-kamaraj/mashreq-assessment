@@ -25,6 +25,10 @@
     "react-native-paper-dropdown": "*",
     "@mui/material": "*",
     "@mui/icons-material": "*",
-    "@react-native-async-storage/async-storage": "*"
+    "@react-native-async-storage/async-storage": "*",
+    "@hookform/resolvers": "*",
+    "yup": "*",
+    "react-router-dom": "*",
+    "buffer": "*"
   }
 }

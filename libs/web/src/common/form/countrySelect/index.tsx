@@ -11,7 +11,7 @@ import {
   useFormContext,
 } from 'react-hook-form';
 
-const CountrySelect = ({ name, label }: IFieldProps) => {
+export const CountrySelect = ({ name, label }: IFieldProps) => {
   const { countryOptions } = useLang();
   const {
     control,
@@ -72,5 +72,3 @@ const CountrySelect = ({ name, label }: IFieldProps) => {
     </FieldController>
   );
 };
-
-export default CountrySelect;

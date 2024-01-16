@@ -1,26 +1,29 @@
-import {
-  addDoc,
-  getDocs,
-  collection,
-  where,
-  query,
-  getDoc,
-  doc,
-} from 'firebase/firestore';
+import { addDoc, getDocs, collection, where, query } from 'firebase/firestore';
 import { IUserType } from '@types';
 import { db, userDb } from './initialize';
+
+const findUserQuery = async (user: IUserType) => {
+  const usersRef = collection(db, 'users');
+  const q = query(
+    usersRef,
+    where('username', '==', user.username),
+    where('country', '==', user.country)
+  );
+  const qDocRef = await getDocs(q);
+  return qDocRef;
+};
 
 export const fSaveUser = async (
   user: IUserType,
   success?: () => void,
-  error?: () => void
+  error?: (code?: string) => void
 ) => {
   try {
     /* Verify username already exists in DB */
-    const d = await getDoc(doc(userDb, 'username', user.username));
-    const userExists = d?.data();
+    const qDocRef = await findUserQuery(user);
+    const userExists = qDocRef?.size > 0;
     if (userExists) {
-      error && error();
+      error && error('USER_EXISTS');
     } else {
       try {
         /* if not exists add username to DB */
@@ -30,17 +33,17 @@ export const fSaveUser = async (
         });
         if (docRef.id && success) {
           success();
-        } else {
-          error && error();
+          return;
         }
+        error && error();
         console.log('Document written with ID: ', docRef.id);
       } catch (e) {
-        console.error('Error adding document: ', e);
+        console.warn('Error adding document: ', e);
         error && error();
       }
     }
   } catch (err) {
-    console.error('Error getting document', err);
+    console.warn('Error getting document', err);
     error && error();
   }
 };
@@ -50,29 +53,22 @@ export const fGetUser = async (
   success?: (user: IUserType) => void,
   error?: () => void
 ) => {
-  const { username, password, country } = user;
-  const usersRef = collection(db, 'users');
-  const q = query(
-    usersRef,
-    where('username', '==', username),
-    where('password', '==', password),
-    where('country', '==', country)
-  );
   try {
-    const doc_refs = await getDocs(q);
-    if (doc_refs.empty) {
-      error && error();
+    const doc_refs = await findUserQuery(user);
+    if (doc_refs.size === 1) {
+      doc_refs.forEach((doc) => {
+        const userData = doc?.data() as IUserType;
+
+        if (doc.id && success) {
+          success({ id: doc.id, ...userData });
+        }
+      });
       return;
     }
-    doc_refs.forEach((doc) => {
-      const userData = doc?.data() as IUserType;
 
-      if (doc.id && success) {
-        success({ id: doc.id, ...userData });
-      }
-    });
+    error && error();
   } catch (err) {
-    console.error('Error update document: ', err);
+    console.warn('Error update document: ', err);
     error && error();
   }
 };

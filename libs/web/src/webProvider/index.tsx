@@ -8,7 +8,6 @@ import '@fontsource/roboto';
 import '@fontsource-variable/noto-kufi-arabic';
 import '@fontsource-variable/noto-sans-tamil';
 
-
 export const WebProvider = ({ children }: { children: React.JSX.Element }) => {
   const webTheme = useGetWebTheme();
   return (

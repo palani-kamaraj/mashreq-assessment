@@ -1,4 +1,4 @@
-import { Resolver, SubmitHandler, useForm } from 'react-hook-form';
+import { Resolver, useForm } from 'react-hook-form';
 import { ILoginFormField, IThemeOptions } from '@types';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { loginValidationSchema } from '../validation/loginSchema';
@@ -20,20 +20,20 @@ export const useLoginForm = (isLoginForm: boolean = false) => {
     resolver: yupResolver(loginValidationSchema) as Resolver<ILoginFormField>,
   });
 
-  const onSaveSubmit: SubmitHandler<ILoginFormField> = (data) => {
+  const onSaveSubmit = (data: ILoginFormField, success: () => void) => {
     const payload = {
       ...data,
       country: data.country?.code as IThemeOptions,
     };
-    setUserData(payload, () => {});
+    setUserData(payload, success);
   };
 
-  const onLoginSubmit: SubmitHandler<ILoginFormField> = (data) => {
+  const onLoginSubmit = (data: ILoginFormField, success: () => void) => {
     const payload = {
       ...data,
       country: data.country?.code as IThemeOptions,
     };
-    getUserData(payload, () => {});
+    getUserData(payload, success);
   };
 
   return {

@@ -14,7 +14,7 @@ export const MCountrySelect = ({ name, label }: IFieldProps) => {
   } = useController({ control, name });
 
   return (
-    <View style={{ marginBottom: 20}}>
+    <View style={{ marginBottom: 20 }}>
       <FieldController name={name}>
         <DropDown
           label={label}
@@ -22,8 +22,14 @@ export const MCountrySelect = ({ name, label }: IFieldProps) => {
           visible={isOpen}
           showDropDown={() => setIsOpen(true)}
           onDismiss={() => setIsOpen(false)}
-          value={value}
-          setValue={onChange}
+          value={value?.code}
+          setValue={(val) =>
+            onChange({
+              code: val,
+              value: val,
+              label: label,
+            })
+          }
           list={countryOptions}
         />
       </FieldController>

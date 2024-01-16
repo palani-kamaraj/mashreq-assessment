@@ -3,12 +3,13 @@ import { useTranslation } from 'react-i18next';
 import { Box, Button } from '@mui/material';
 import { FormProvider } from 'react-hook-form';
 import { useLoginForm, useStore } from '@shared';
-import CountrySelect from '../../common/form/countrySelect';
-import { InputField } from '../../common';
+import { useWebLoginForm } from '../../hooks/useWebLoginForm';
+import { InputField, CountrySelect } from '../../common';
 
 const LoginForm = () => {
   const { t } = useTranslation();
   const { form, onSubmit } = useLoginForm(true);
+  const { onSubmitForm } = useWebLoginForm(onSubmit);
   const isLoading = useStore((state) => state.isLoading);
 
   return (
@@ -26,7 +27,7 @@ const LoginForm = () => {
           fullWidth
           variant="contained"
           sx={{ mt: 3, mb: 2 }}
-          onClick={form.handleSubmit((data) => onSubmit(data))}
+          onClick={form.handleSubmit((data) => onSubmitForm(data))}
           disabled={isLoading}
         >
           {t('actions.login')}

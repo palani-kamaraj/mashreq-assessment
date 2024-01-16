@@ -2,18 +2,22 @@ import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { Button } from 'react-native-paper';
 import { Image, StyleSheet, View } from 'react-native';
-import { FormProvider } from 'react-hook-form';
+import { FormProvider, SubmitErrorHandler } from 'react-hook-form';
 import { useLoginForm } from '@shared';
 import { MCountrySelect, MInputField } from '../common';
-import { useOrientation } from '../hooks';
-import { IOrientationType } from '@types';
+import { useOrientation, useSaveForm } from '../hooks';
+import { ILoginFormField, IOrientationType } from '@types';
 import Logo from '../images/logo.png';
 
 export const SaveForm = () => {
   const { form, onSubmit } = useLoginForm();
+  const { onSubmitForm } = useSaveForm(onSubmit);
   const { t } = useTranslation();
   const deviceOrientation = useOrientation();
   const isPortrait = deviceOrientation === IOrientationType.PORTRAIT;
+
+  const onInvalid: SubmitErrorHandler<ILoginFormField> = (errors) =>
+    console.error(errors);
 
   return (
     <View style={styles.containerStyle}>
@@ -32,7 +36,11 @@ export const SaveForm = () => {
           <MCountrySelect name="country" label={t('screen.login.country')} />
           <MInputField name="username" label={t('screen.login.username')} />
           <MInputField name="password" label={t('screen.login.password')} />
-          <Button style={{ marginTop: 10 }} mode="contained" onPress={onSubmit}>
+          <Button
+            style={{ marginTop: 10 }}
+            mode="contained"
+            onPress={form.handleSubmit(onSubmitForm, onInvalid)}
+          >
             {t('actions.save')}
           </Button>
         </FormProvider>

@@ -1,3 +1,4 @@
+import { SubmitHandler } from 'react-hook-form';
 import { IThemeOptions } from './enum';
 
 export interface ICountryType {
@@ -25,3 +26,5 @@ export interface IFieldProps {
   name: string;
   label: string;
 }
+
+export type IUserSubmitHandlerType = SubmitHandler<ILoginFormField>;
