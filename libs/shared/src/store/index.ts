@@ -10,8 +10,18 @@ interface IStore {
   isLoading: boolean;
   invalidUserMessage: string;
   setLang: (val: ILanguageOptions) => void;
-  setUser: (val: IUserType, success: () => void) => void;
-  getUser: (val: IUserType, success: () => void) => void;
+  setUser: (
+    val: IUserType,
+    success: () => void,
+    error?: (msg: string) => void
+  ) => void;
+  getUser: (
+    val: IUserType,
+    success: () => void,
+    error?: (msg: string) => void
+  ) => void;
+  resetInvalidUserMessage: () => void;
+  resetUserInfo: () => void;
 }
 
 const storeOptions = {
@@ -31,7 +41,11 @@ const store: StateCreator<IStore> = (set) => ({
   isLoading: false,
   invalidUserMessage: '',
   setLang: (val: ILanguageOptions) => set(() => ({ lang: val })),
-  setUser: (val: IUserType, success: () => void) => {
+  setUser: (
+    val: IUserType,
+    success: () => void,
+    error?: (msg: string) => void
+  ) => {
     set(() => ({ isLoading: true, invalidUserMessage: '' }));
     fSaveUser(
       val,
@@ -42,16 +56,24 @@ const store: StateCreator<IStore> = (set) => ({
         }
       },
       (code?: string) => {
+        const errorMsg = i18n.t(
+          `screen.login.error.${
+            code === 'USER_EXISTS' ? 'userNameAlreadyExists' : 'invalidUser'
+          }`
+        );
         set(() => ({
-          invalidUserMessage: i18n.t(
-            `screen.login.error.${code === 'USER_EXISTS' ? 'userNameAlreadyExists' : 'invalidUser'}`
-          ),
+          invalidUserMessage: errorMsg,
           isLoading: false,
         }));
+        error && error(errorMsg);
       }
     );
   },
-  getUser: (val: IUserType, success: () => void) => {
+  getUser: (
+    val: IUserType,
+    success: () => void,
+    error?: (msg: string) => void
+  ) => {
     set(() => ({ isLoading: true, invalidUserMessage: '' }));
     fGetUser(
       val,
@@ -62,13 +84,17 @@ const store: StateCreator<IStore> = (set) => ({
         }
       },
       () => {
+        const errorMessage = i18n.t('screen.login.error.invalidUser');
         set(() => ({
-          invalidUserMessage: i18n.t('screen.login.error.invalidUser'),
+          invalidUserMessage: errorMessage,
           isLoading: false,
         }));
+        error && error(errorMessage);
       }
     );
   },
+  resetInvalidUserMessage: () => set(() => ({ invalidUserMessage: '' })),
+  resetUserInfo: () => set(() => ({ user: undefined })),
 });
 
 export const useStore = create<IStore>()(persist(store, storeOptions));

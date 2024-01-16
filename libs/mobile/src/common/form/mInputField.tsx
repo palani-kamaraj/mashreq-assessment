@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { TextInput } from 'react-native-paper';
+import { HelperText, TextInput } from 'react-native-paper';
 import { useController, useFormContext } from 'react-hook-form';
 import { FieldController } from '@shared';
 import { View } from 'react-native';
@@ -7,17 +7,32 @@ import { View } from 'react-native';
 export const MInputField = ({
   name,
   label,
+  info,
   showEye,
+  onChangeText,
 }: {
   name: string;
   label: string;
+  info?: string;
   showEye?: boolean;
+  onChangeText?: () => void;
 }) => {
   const [secureText, setSecureText] = useState<boolean>(false);
-  const { control } = useFormContext();
+  const {
+    control,
+    formState: { errors },
+  } = useFormContext();
   const {
     field: { value, onChange },
   } = useController({ name, control });
+  const errorMessage = errors?.[name]?.message || '';
+
+  const onChangeInputText = (text: string) => {
+    onChange(text);
+    if (onChangeText) {
+      onChangeText();
+    }
+  };
 
   const onPressIcon = () => {
     setSecureText(!secureText);
@@ -29,7 +44,7 @@ export const MInputField = ({
         <TextInput
           mode="outlined"
           label={label}
-          onChangeText={onChange}
+          onChangeText={onChangeInputText}
           value={value}
           secureTextEntry={showEye}
           right={
@@ -37,6 +52,9 @@ export const MInputField = ({
           }
         />
       </FieldController>
+      <HelperText type={errorMessage ? 'error' : 'info'}>
+        <>{info ? info : errorMessage}</>
+      </HelperText>
     </View>
   );
 };

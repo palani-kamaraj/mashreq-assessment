@@ -2,14 +2,8 @@ import React from 'react';
 import { Autocomplete, Box, InputAdornment, TextField } from '@mui/material';
 import { FieldController, useLang } from '@shared';
 import CountryImage from './countryImage';
-import { ICountryType, IFieldProps } from '@types';
-import {
-  FieldError,
-  FieldErrorsImpl,
-  Merge,
-  useController,
-  useFormContext,
-} from 'react-hook-form';
+import { IFieldProps, IFormCountryErrors } from '@types';
+import { useController, useFormContext } from 'react-hook-form';
 
 export const CountrySelect = ({ name, label }: IFieldProps) => {
   const { countryOptions } = useLang();
@@ -20,9 +14,7 @@ export const CountrySelect = ({ name, label }: IFieldProps) => {
   const {
     field: { value, onChange },
   } = useController({ control, name });
-  const errorObj: Merge<FieldError, FieldErrorsImpl<ICountryType>> = errors?.[
-    name
-  ] || {};
+  const errorObj: IFormCountryErrors = errors?.[name] || {};
   const errorMessage = errorObj?.code?.message || errorObj?.message || '';
 
   return (

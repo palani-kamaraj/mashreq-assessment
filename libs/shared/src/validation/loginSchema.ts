@@ -12,6 +12,8 @@ const validationRegex = {
   [IThemeOptions.PK]: /^(?=.*[a-zA-Z])(?=.*\d)(?=.*[!@#$%^&*]).{8,}$/,
 };
 
+const passwordRegex = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/;
+
 export const loginValidationSchema = yup.object().shape({
   country: yup
     .object()
@@ -21,29 +23,19 @@ export const loginValidationSchema = yup.object().shape({
       label: yup.string().required(countryMessage),
     })
     .required(countryMessage),
-  username: yup
-    .string()
-    .test('username', (val, { parent, createError, path }) => {
-      const countryCode = parent.country?.code || '';
-      const validationObj = validationRegex[countryCode as IThemeOptions];
-      const usernameErrorMessage = createError({
-        path,
-        message: trans(`screen.login.error.username.${countryCode}`),
-      });
-      if (!val)
-        return createError({
-          path,
-          message: trans(`screen.login.error.username.${countryCode}`),
-        });
-      if (countryCode) {
-        return validationObj?.test(val) ? true : usernameErrorMessage;
-      }
-      return true;
-    }),
+  username: yup.string().test('username', (val, { parent }) => {
+    const countryCode = parent.country?.code || '';
+    const validationObj = validationRegex[countryCode as IThemeOptions];
+    if (!val) return false;
+    if (countryCode) {
+      return validationObj?.test(val);
+    }
+    return true;
+  }),
   password: yup
     .string()
     .test('password', trans('screen.login.error.password'), (val) => {
       if (!val) return false;
-      return true;
+      return passwordRegex?.test(val);
     }),
 });

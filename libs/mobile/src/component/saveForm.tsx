@@ -3,7 +3,7 @@ import { useTranslation } from 'react-i18next';
 import { Button } from 'react-native-paper';
 import { Image, StyleSheet, View } from 'react-native';
 import { FormProvider, SubmitErrorHandler } from 'react-hook-form';
-import { useLoginForm } from '@shared';
+import { useLoginForm, useStore } from '@shared';
 import { MCountrySelect, MInputField } from '../common';
 import { useOrientation, useSaveForm } from '../hooks';
 import { ILoginFormField, IOrientationType } from '@types';
@@ -12,12 +12,19 @@ import Logo from '../images/logo.png';
 export const SaveForm = () => {
   const { form, onSubmit } = useLoginForm();
   const { onSubmitForm } = useSaveForm(onSubmit);
+  const invalidUserMessage = useStore((state) => state.invalidUserMessage);
+  const resetInvalidUserMessage = useStore(
+    (state) => state.resetInvalidUserMessage
+  );
   const { t } = useTranslation();
   const deviceOrientation = useOrientation();
   const isPortrait = deviceOrientation === IOrientationType.PORTRAIT;
+  const countryCode = form.watch('country')?.code || '';
 
-  const onInvalid: SubmitErrorHandler<ILoginFormField> = (errors) =>
-    console.error(errors);
+  const onInvalid: SubmitErrorHandler<ILoginFormField> = (errors) => {
+    //console.error(errors)
+    console.log(errors)
+  };
 
   return (
     <View style={styles.containerStyle}>
@@ -33,9 +40,32 @@ export const SaveForm = () => {
           </View>
         </View>
         <FormProvider {...form}>
-          <MCountrySelect name="country" label={t('screen.login.country')} />
-          <MInputField name="username" label={t('screen.login.username')} />
-          <MInputField name="password" label={t('screen.login.password')} />
+          <MCountrySelect
+            name="country"
+            label={t('screen.login.country')}
+            info={t('screen.login.fields.country')}
+          />
+          <MInputField
+            name="username"
+            label={t('screen.login.username')}
+            onChangeText={() => {
+              if (invalidUserMessage) {
+                resetInvalidUserMessage();
+              }
+            }}
+            info={
+              invalidUserMessage
+                ? ''
+                : countryCode
+                ? t(`screen.login.fields.usernameInfo.${countryCode}`)
+                : ''
+            }
+          />
+          <MInputField
+            name="password"
+            label={t('screen.login.password')}
+            info={t('screen.login.fields.password')}
+          />
           <Button
             style={{ marginTop: 10 }}
             mode="contained"

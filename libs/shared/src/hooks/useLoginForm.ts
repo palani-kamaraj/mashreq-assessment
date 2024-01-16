@@ -25,7 +25,14 @@ export const useLoginForm = (isLoginForm: boolean = false) => {
       ...data,
       country: data.country?.code as IThemeOptions,
     };
-    setUserData(payload, success);
+    setUserData(payload, success, (msg: string) => {
+      if (msg) {
+        form.setError('username', {
+          type: 'username',
+          message: msg,
+        });
+      }
+    });
   };
 
   const onLoginSubmit = (data: ILoginFormField, success: () => void) => {

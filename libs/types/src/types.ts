@@ -1,4 +1,9 @@
-import { SubmitHandler } from 'react-hook-form';
+import {
+  FieldError,
+  FieldErrorsImpl,
+  Merge,
+  SubmitHandler,
+} from 'react-hook-form';
 import { IThemeOptions } from './enum';
 
 export interface ICountryType {
@@ -25,6 +30,12 @@ export interface ILoginFormField {
 export interface IFieldProps {
   name: string;
   label: string;
+  info?: string;
 }
 
 export type IUserSubmitHandlerType = SubmitHandler<ILoginFormField>;
+
+export type IFormCountryErrors = Merge<
+  FieldError,
+  FieldErrorsImpl<ICountryType>
+>;

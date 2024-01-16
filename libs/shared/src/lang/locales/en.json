@@ -1,39 +1,47 @@
 {
-    "lang": {
-        "options": {
-            "english": "English",
-            "arabic": "عربي",
-            "tamil": "தமிழ்"
-        }
-    },
-    "actions": {
-        "login": "Login",
-        "save": "Save"
-    },
-    "screen": {
-        "login": {
-            "country": "Choose a country",
-            "username": "Username",
-            "password": "Password",
-            "countryOptions": {
-                "ae": "United Arab Emirates",
-                "in": "India",
-                "lk": "Sri lanka",
-                "pk": "Pakistan"
-            },
-            "error": {
-                "invalidUser": "Please enter a valid username or password",
-                "userNameAlreadyExists": "Entered username is already exists.",
-                "country": "Please select country from the list.",
-                "username": {
-                    "required": "Username cannot be empty. Please enter your chosen username.",
-                    "ae": "Please enter a valid value with at least 5 alphanumeric characters.",
-                    "in": "Your input should start with a letter and be atleast 10 characters long, including letters and numbers.",
-                    "lk": "Please use at least 7 characters, which can include letters, numbers, and underscores.",
-                    "pk": "Please use at least 8 characters, including at least one letter, one number, and one special character (!@#$%^&*)."
-                },
-                "password": "Password cannot be empty. For security, please enter your chosen password."
-            }
-        }
+  "lang": {
+    "options": {
+      "english": "English",
+      "arabic": "عربي",
+      "tamil": "தமிழ்"
     }
+  },
+  "actions": {
+    "login": "Login",
+    "save": "Save",
+    "new": "Create New"
+  },
+  "screen": {
+    "login": {
+      "country": "Choose a country",
+      "username": "Username",
+      "password": "Password",
+      "countryOptions": {
+        "ae": "United Arab Emirates",
+        "in": "India",
+        "lk": "Sri lanka",
+        "pk": "Pakistan"
+      },
+      "fields": {
+        "country": "Please select country from the list.",
+        "password": "Minimum eight characters, at least one letter and one number.",
+        "usernameInfo": {
+          "ae": "Your username must be a valid combination of at least 5 alphanumeric characters.",
+          "in": "Create a username starting with a letter, and make it at least 10 characters long, including both letters and numbers.",
+          "lk": "Please choose a username with a minimum of 7 characters, allowing letters, numbers, and underscores.",
+          "pk": "For your username, use a minimum of 8 characters, including at least one letter, one number, and one special character (!@#$%^&*)."
+        }
+      },
+      "error": {
+        "invalidUser": "Please enter a valid username or password",
+        "userNameAlreadyExists": "Entered username is already exists.",
+        "country": "Please select country from the list."
+      }
+    },
+    "mobWelcome": {
+      "title": "Welcome!",
+      "desc": "We're thrilled to have you here. To get started, please log in using your credentials on our website. Your journey awaits!",
+      "desc1": "Your journey awaits!"
+    }
+  }
 }
