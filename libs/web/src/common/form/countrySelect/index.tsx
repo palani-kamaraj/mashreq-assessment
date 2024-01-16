@@ -5,7 +5,7 @@ import CountryImage from './countryImage';
 import { IFieldProps, IFormCountryErrors } from '@types';
 import { useController, useFormContext } from 'react-hook-form';
 
-export const CountrySelect = ({ name, label }: IFieldProps) => {
+export const CountrySelect = ({ name, label, info }: IFieldProps) => {
   const { countryOptions } = useLang();
   const {
     control,
@@ -42,7 +42,7 @@ export const CountrySelect = ({ name, label }: IFieldProps) => {
         renderInput={(params) => (
           <TextField
             error={!!errorMessage}
-            helperText={<>{errorMessage || ''}</>}
+            helperText={<>{(info ? info : errorMessage) || ''}</>}
             {...params}
             label={label}
             inputProps={{

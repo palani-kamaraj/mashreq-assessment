@@ -1,9 +1,9 @@
-import { ILoginFormField, IUserSubmitHandlerType } from '@types';
+import { useLoginForm } from '@shared';
 import { useNavigate } from 'react-router-dom';
+import { IUserSubmitHandlerType } from '@types';
 
-export const useWebLoginForm = (
-  onSubmit: (data: ILoginFormField, success: () => void) => void
-) => {
+export const useWebLoginForm = () => {
+  const { form, onSubmit } = useLoginForm(true);
   const navigate = useNavigate();
   const onSubmitForm: IUserSubmitHandlerType = (data) => {
     const payload = {
@@ -16,6 +16,7 @@ export const useWebLoginForm = (
   };
 
   return {
+    form,
     onSubmitForm,
   };
 };

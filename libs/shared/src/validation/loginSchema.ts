@@ -2,7 +2,7 @@ import { IThemeOptions } from '@types';
 import i18n from 'i18next';
 import * as yup from 'yup';
 
-const trans = (key: string) => i18n.t(key);
+export const trans = (key: string) => i18n.t(key);
 const countryMessage = trans('screen.login.country');
 
 const validationRegex = {
@@ -12,9 +12,9 @@ const validationRegex = {
   [IThemeOptions.PK]: /^(?=.*[a-zA-Z])(?=.*\d)(?=.*[!@#$%^&*]).{8,}$/,
 };
 
-const passwordRegex = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/;
+export const passwordRegex = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/;
 
-export const loginValidationSchema = yup.object().shape({
+export const loginSchema = yup.object().shape({
   country: yup
     .object()
     .shape({

@@ -7,11 +7,15 @@ import { Visibility, VisibilityOff } from '@mui/icons-material';
 export const InputField = ({
   name,
   label,
-  isProtected
+  info,
+  isProtected,
+  onChange,
 }: {
   name: string;
   label: string;
+  info?: string;
   isProtected?: boolean;
+  onChange?: () => void;
 }) => {
   const {
     control,
@@ -29,6 +33,13 @@ export const InputField = ({
     event.preventDefault();
   };
 
+  const onChangeText = (e: React.ChangeEvent<HTMLInputElement>) => {
+    field.onChange(e.target.value);
+    if (onChange) {
+      onChange();
+    }
+  };
+
   return (
     <FieldController name={name}>
       <TextField
@@ -38,8 +49,10 @@ export const InputField = ({
         id={name}
         label={label}
         error={!!errorMessage}
-        helperText={<>{errorMessage ?? ''}</>}
+        helperText={<>{(info ? info : errorMessage) || ''}</>}
         type={showPassword ? 'password' : 'text'}
+        value={field?.value}
+        onChange={onChangeText}
         InputProps={{
           endAdornment: isProtected ? (
             <InputAdornment position="end">
@@ -56,7 +69,6 @@ export const InputField = ({
             <></>
           ),
         }}
-        {...field}
       />
     </FieldController>
   );

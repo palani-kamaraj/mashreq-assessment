@@ -8,8 +8,15 @@
   },
   "actions": {
     "login": "Login",
+    "change": "Change",
+    "cancel": "Cancel",
     "save": "Save",
-    "new": "Create New"
+    "new": "Create New",
+    "changePassword": "Change"
+  },
+  "apiCodes":{
+    "INVALID_PASSWORD": "Please enter a valid password.",
+    "FAILED_TO_UPDATE_PASSWORD": "Failed to update password."
   },
   "screen": {
     "login": {
@@ -24,7 +31,7 @@
       },
       "fields": {
         "country": "Please select country from the list.",
-        "password": "Minimum eight characters, at least one letter and one number.",
+        "password": "Minimum 8 characters, at least one letter and one number.",
         "usernameInfo": {
           "ae": "Your username must be a valid combination of at least 5 alphanumeric characters.",
           "in": "Create a username starting with a letter, and make it at least 10 characters long, including both letters and numbers.",
@@ -35,13 +42,26 @@
       "error": {
         "invalidUser": "Please enter a valid username or password",
         "userNameAlreadyExists": "Entered username is already exists.",
-        "country": "Please select country from the list."
+        "country": "Please select country from the list.",
+        "password": "Please enter a valid password."
       }
     },
     "mobWelcome": {
       "title": "Welcome!",
       "desc": "We're thrilled to have you here. To get started, please log in using your credentials on our website. Your journey awaits!",
       "desc1": "Your journey awaits!"
+    },
+    "welcome": {
+      "desc": "Enjoy the convenience of transferring money through your banking experience anytime, anywhere",
+      "changePassword": {
+        "title": "Change Password",
+        "oldPassword": "Old Password",
+        "newPassword": "New Password",
+        "successMessage": "Password updated successfully",
+        "errors": {
+          "failedToUpdate": "Failed to update password. Please try again."
+        }
+      }
     }
   }
 }

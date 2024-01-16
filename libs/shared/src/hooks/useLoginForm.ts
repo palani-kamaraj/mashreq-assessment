@@ -1,7 +1,7 @@
 import { Resolver, useForm } from 'react-hook-form';
 import { ILoginFormField, IThemeOptions } from '@types';
 import { yupResolver } from '@hookform/resolvers/yup';
-import { loginValidationSchema } from '../validation/loginSchema';
+import { loginSchema } from '../validation/loginSchema';
 import { useLang } from './useLang';
 import { useStore } from '../store';
 
@@ -17,22 +17,22 @@ export const useLoginForm = (isLoginForm: boolean = false) => {
   const form = useForm<ILoginFormField>({
     defaultValues: initialValues,
     mode: 'all',
-    resolver: yupResolver(loginValidationSchema) as Resolver<ILoginFormField>,
+    resolver: yupResolver(loginSchema) as Resolver<ILoginFormField>,
   });
 
+  const setUserNameError = (msg: string) => {
+    form.setError('username', {
+      type: 'username',
+      message: msg,
+    });
+  };
+  
   const onSaveSubmit = (data: ILoginFormField, success: () => void) => {
     const payload = {
       ...data,
       country: data.country?.code as IThemeOptions,
     };
-    setUserData(payload, success, (msg: string) => {
-      if (msg) {
-        form.setError('username', {
-          type: 'username',
-          message: msg,
-        });
-      }
-    });
+    setUserData(payload, success, setUserNameError);
   };
 
   const onLoginSubmit = (data: ILoginFormField, success: () => void) => {
@@ -40,7 +40,7 @@ export const useLoginForm = (isLoginForm: boolean = false) => {
       ...data,
       country: data.country?.code as IThemeOptions,
     };
-    getUserData(payload, success);
+    getUserData(payload, success, setUserNameError);
   };
 
   return {

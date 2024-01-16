@@ -1,9 +1,19 @@
-import { addDoc, getDocs, collection, where, query } from 'firebase/firestore';
-import { IUserType } from '@types';
+import {
+  addDoc,
+  getDocs,
+  collection,
+  where,
+  query,
+  getDoc,
+  doc,
+  setDoc,
+} from 'firebase/firestore';
+import { IUpdateUserPasswordType, IUserType } from '@types';
 import { db, userDb } from './initialize';
 
+const usersRef = collection(db, 'users');
+
 const findUserQuery = async (user: IUserType) => {
-  const usersRef = collection(db, 'users');
   const q = query(
     usersRef,
     where('username', '==', user.username),
@@ -36,7 +46,6 @@ export const fSaveUser = async (
           return;
         }
         error && error();
-        console.log('Document written with ID: ', docRef.id);
       } catch (e) {
         console.warn('Error adding document: ', e);
         error && error();
@@ -70,5 +79,48 @@ export const fGetUser = async (
   } catch (err) {
     console.warn('Error update document: ', err);
     error && error();
+  }
+};
+
+export const fChangeUserPassword = async (
+  val: IUpdateUserPasswordType,
+  success?: () => void,
+  error?: (code: string) => void
+) => {
+  try {
+    /* Verify username already exists in DB */
+    const userDocRef = doc(db, 'users', val.id || '');
+    const qDocRef = await getDoc(userDocRef);
+    const userData = qDocRef?.data();
+
+    if (userData) {
+      const isValidateUser =
+        typeof btoa === 'function' &&
+        atob(userData?.['password']) === val.oldPassword;
+      if (isValidateUser) {
+        setDoc(
+          userDocRef,
+          {
+            password: val?.password,
+            updatedOn: new Date().toISOString(),
+          },
+          {
+            merge: true,
+          }
+        )
+          .then(() => success && success())
+          .catch(() => {
+            error && error('FAILED_TO_UPDATE_PASSWORD');
+          });
+        return;
+      }
+
+      error && error('INVALID_PASSWORD');
+      return;
+    }
+    error && error('FAILED_TO_UPDATE_PASSWORD');
+  } catch (err) {
+    console.warn('Error update document: ', err);
+    error && error('FAILED_TO_UPDATE_PASSWORD');
   }
 };

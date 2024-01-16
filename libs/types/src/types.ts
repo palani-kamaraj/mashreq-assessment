@@ -21,9 +21,18 @@ export interface IUserType {
   updatedOn?: string;
 }
 
+export interface IUpdateUserPasswordType extends IChangePasswordFormField {
+  id?: string;
+}
+
 export interface ILoginFormField {
   country: ICountryType | undefined;
   username: string;
+  password: string;
+}
+
+export interface IChangePasswordFormField {
+  oldPassword: string;
   password: string;
 }
 
@@ -34,6 +43,8 @@ export interface IFieldProps {
 }
 
 export type IUserSubmitHandlerType = SubmitHandler<ILoginFormField>;
+export type IUserChangePasswordSubmitHandlerType =
+  SubmitHandler<IChangePasswordFormField>;
 
 export type IFormCountryErrors = Merge<
   FieldError,

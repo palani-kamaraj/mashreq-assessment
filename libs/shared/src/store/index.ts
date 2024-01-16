@@ -1,12 +1,17 @@
 import { StateCreator, create } from 'zustand';
 import { createJSONStorage, persist } from 'zustand/middleware';
-import { ILanguageOptions, IUserType } from '@types';
+import { ILanguageOptions, IUpdateUserPasswordType, IUserType } from '@types';
 import i18n from 'i18next';
-import { fGetUser, fSaveUser } from '../firebase';
+import { fChangeUserPassword, fGetUser, fSaveUser } from '../firebase';
 
-interface IStore {
+export interface IStore {
   lang: ILanguageOptions;
   user: IUserType | undefined;
+  alert: {
+    show: boolean;
+    message: string;
+    severity?: string;
+  };
   isLoading: boolean;
   invalidUserMessage: string;
   setLang: (val: ILanguageOptions) => void;
@@ -20,8 +25,14 @@ interface IStore {
     success: () => void,
     error?: (msg: string) => void
   ) => void;
+  updatePassword: (
+    val: IUpdateUserPasswordType,
+    success?: () => void,
+    error?: (msg: string) => void
+  ) => void;
   resetInvalidUserMessage: () => void;
   resetUserInfo: () => void;
+  resetAlert: () => void;
 }
 
 const storeOptions = {
@@ -39,7 +50,13 @@ const store: StateCreator<IStore> = (set) => ({
   lang: ILanguageOptions.EN,
   user: undefined,
   isLoading: false,
+  showAlert: false,
+  alertMessage: '',
   invalidUserMessage: '',
+  alert: {
+    show: false,
+    message: '',
+  },
   setLang: (val: ILanguageOptions) => set(() => ({ lang: val })),
   setUser: (
     val: IUserType,
@@ -71,14 +88,14 @@ const store: StateCreator<IStore> = (set) => ({
   },
   getUser: (
     val: IUserType,
-    success: () => void,
+    success?: () => void,
     error?: (msg: string) => void
   ) => {
     set(() => ({ isLoading: true, invalidUserMessage: '' }));
     fGetUser(
       val,
-      () => {
-        set(() => ({ user: { ...val, password: '' }, isLoading: false }));
+      (user: IUserType) => {
+        set(() => ({ user: { ...user, password: '' }, isLoading: false }));
         if (success) {
           success();
         }
@@ -93,8 +110,45 @@ const store: StateCreator<IStore> = (set) => ({
       }
     );
   },
+  updatePassword: (
+    val: IUpdateUserPasswordType,
+    success?: () => void,
+    error?: (msg: string) => void
+  ) => {
+    set(() => ({ isLoading: true, invalidUserMessage: '' }));
+    fChangeUserPassword(
+      val,
+      () => {
+        set(() => ({
+          isLoading: false,
+          alert: {
+            show: true,
+            message: i18n.t(`screen.welcome.changePassword.successMessage`),
+          },
+        }));
+        if (success) {
+          success();
+        }
+      },
+      (code?: string) => {
+        const errorMessage = i18n.t(`apiCodes.${code}`);
+        set(() => ({
+          invalidUserMessage: errorMessage,
+          isLoading: false,
+        }));
+        error && error(errorMessage);
+      }
+    );
+  },
   resetInvalidUserMessage: () => set(() => ({ invalidUserMessage: '' })),
   resetUserInfo: () => set(() => ({ user: undefined })),
+  resetAlert: () =>
+    set(() => ({
+      alert: {
+        show: false,
+        message: '',
+      },
+    })),
 });
 
 export const useStore = create<IStore>()(persist(store, storeOptions));

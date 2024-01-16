@@ -1,10 +1,20 @@
 import { createTheme } from '@mui/material';
 import { useTranslation } from 'react-i18next';
 import { ILanguageOptions } from '@types';
-import { themeConfig } from '../theme';
+import { useStore, themeColor } from '@shared';
 
 export const useGetWebTheme = () => {
   const { i18n } = useTranslation();
+  const userCountry = useStore((state) => state.user?.country);
+
+  const colors = userCountry ? themeColor[userCountry] : themeColor.ae;
+  const themeConfig = {
+    palette: {
+      primary: {
+        main: colors,
+      },
+    },
+  };
 
   const fontNames = {
     [ILanguageOptions.EN]: 'Roboto',

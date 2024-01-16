@@ -1,2 +1,1 @@
-export * from './appTheme'
-export * from './font'
+export * from './font';
