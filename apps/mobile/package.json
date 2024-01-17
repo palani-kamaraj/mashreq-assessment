@@ -29,6 +29,7 @@
     "@hookform/resolvers": "*",
     "yup": "*",
     "react-router-dom": "*",
-    "buffer": "*"
+    "buffer": "*",
+    "react-native-mmkv": "*"
   }
 }

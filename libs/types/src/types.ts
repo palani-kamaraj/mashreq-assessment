@@ -4,7 +4,7 @@ import {
   Merge,
   SubmitHandler,
 } from 'react-hook-form';
-import { IThemeOptions } from './enum';
+import { ILanguageOptions, IThemeOptions } from './enum';
 
 export interface ICountryType {
   code: IThemeOptions;
@@ -50,3 +50,35 @@ export type IFormCountryErrors = Merge<
   FieldError,
   FieldErrorsImpl<ICountryType>
 >;
+
+
+export interface IStore {
+  lang: ILanguageOptions;
+  user: IUserType | undefined;
+  alert: {
+    show: boolean;
+    message: string;
+    severity?: string;
+  };
+  isLoading: boolean;
+  invalidUserMessage: string;
+  setLang: (val: ILanguageOptions) => void;
+  setUser: (
+    val: IUserType,
+    success: () => void,
+    error?: (msg: string) => void
+  ) => void;
+  getUser: (
+    val: IUserType,
+    success: () => void,
+    error?: (msg: string) => void
+  ) => void;
+  updatePassword: (
+    val: IUpdateUserPasswordType,
+    success?: () => void,
+    error?: (msg: string) => void
+  ) => void;
+  resetInvalidUserMessage: () => void;
+  resetUserInfo: () => void;
+  resetAlert: () => void;
+}

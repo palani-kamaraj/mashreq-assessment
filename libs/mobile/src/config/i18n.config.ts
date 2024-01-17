@@ -1,8 +1,11 @@
-import { i18nConfig, i18nOptions } from '@shared';
+import { i18nConfig as i18nMConfig, i18nOptions } from '@shared';
+import { mStoreState } from '../hooks';
+import { IThemeOptions } from '@types';
 import 'intl-pluralrules'; // this is important to handle Android "i18next::pluralResolver:" error
 
-i18nConfig.init({
-  ...i18nOptions
+i18nMConfig.init({
+  ...i18nOptions,
+  lng: mStoreState?.lang ??  IThemeOptions.AE
 });
 
-export default i18nConfig;
+export default i18nMConfig;

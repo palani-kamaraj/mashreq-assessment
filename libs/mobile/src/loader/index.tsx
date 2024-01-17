@@ -1,9 +1,9 @@
 import React from 'react';
 import { ActivityIndicator, Modal, Portal } from 'react-native-paper';
-import { useStore } from '@shared';
+import { useMStore } from '../hooks';
 
 export const Loader = () => {
-  const isLoading = useStore((state) => state.isLoading);
+  const isLoading = useMStore((state) => state.isLoading);
   return (
     <Portal>
       <Modal visible={isLoading}>

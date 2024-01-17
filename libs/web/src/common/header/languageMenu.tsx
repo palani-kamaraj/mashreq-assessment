@@ -6,7 +6,8 @@ import { Language } from '@mui/icons-material';
 
 export const LanguageMenu = () => {
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
-  const selectedLang = useStore((state)=>state.lang);
+  const selectedLang = useStore((state) => state.lang);
+  const setLanguage = useStore((state) => state.setLang);
   const { options, changeLanguage } = useLang();
   const currentLanguageLabel =
     options.find((lang) => lang.value === selectedLang)?.label || '';
@@ -15,7 +16,9 @@ export const LanguageMenu = () => {
   const handleMenuClose = (value: ILanguageOptions) => {
     setAnchorEl(null);
     if (value && typeof value === 'string') {
-      changeLanguage(value);
+      changeLanguage(value, () => {
+        setLanguage(value);
+      });
     }
   };
 
@@ -51,7 +54,12 @@ export const LanguageMenu = () => {
           );
         })}
       </Menu>
-      <Box sx={{cursor: 'pointer'}} display="flex" alignItems="center" onClick={handleProfileMenuOpen}>
+      <Box
+        sx={{ cursor: 'pointer' }}
+        display="flex"
+        alignItems="center"
+        onClick={handleProfileMenuOpen}
+      >
         <Typography component="span" variant="body1">
           {currentLanguageLabel}
         </Typography>

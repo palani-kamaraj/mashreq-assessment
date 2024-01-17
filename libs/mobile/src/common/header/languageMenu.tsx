@@ -2,13 +2,15 @@ import * as React from 'react';
 import { I18nManager, Platform, View } from 'react-native';
 import { Menu, Icon, Text } from 'react-native-paper';
 import RNRestart from 'react-native-restart';
-import { useLang, useStore } from '@shared';
+import { useLang } from '@shared';
 import { ILanguageOptions } from '@types';
+import { useMStore } from '../../hooks/useMStore';
 
 const LanguageMenu = () => {
   const [isOpen, setIsOpen] = React.useState<boolean>(false);
-  const selectedLang = useStore((state) => state.lang);
-  const isLoggedInUser = useStore((state) => state.user?.username);
+  const selectedLang = useMStore((state) => state.lang);
+  const setLanguage = useMStore((state) => state.setLang);
+  const isLoggedInUser = useMStore((state) => state.user?.username);
   const { options, changeLanguage } = useLang();
   const currentLanguageLabel =
     options.find((lang) => lang.value === selectedLang)?.label || '';
@@ -20,6 +22,7 @@ const LanguageMenu = () => {
 
   const onPressItem = (value: ILanguageOptions) => {
     changeLanguage(value, () => {
+      setLanguage(value);
       I18nManager.forceRTL(value === ILanguageOptions.AR);
       RNRestart.Restart();
     });
@@ -30,8 +33,7 @@ const LanguageMenu = () => {
     <View
       style={{
         paddingTop: 40,
-        flexDirection: isIOS ? 'row' : 'column',
-        justifyContent: 'flex-end',
+        flexDirection: 'row-reverse',
       }}
     >
       <Menu

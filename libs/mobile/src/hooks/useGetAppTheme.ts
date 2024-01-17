@@ -1,12 +1,10 @@
-import { useTranslation } from 'react-i18next';
 import { MD3LightTheme as DefaultTheme } from 'react-native-paper';
-import { ILanguageOptions } from '@types';
-import { themeColor, useStore } from '@shared';
+import { getFontName, themeColor } from '@shared';
 import { addCustomFonts } from '../theme';
+import { useMStore } from './useMStore';
 
 export const useGetAppTheme = () => {
-  const { i18n } = useTranslation();
-  const userCountry = useStore((state) => state.user?.country);
+  const userCountry = useMStore((state) => state.user?.country);
   const colors = userCountry ? themeColor[userCountry] : themeColor.ae;
   const appTheme = { ...DefaultTheme };
   const updatedAppTheme = {
@@ -17,14 +15,7 @@ export const useGetAppTheme = () => {
     },
   };
 
-  const fontNames = {
-    [ILanguageOptions.EN]: 'Roboto',
-    [ILanguageOptions.AR]: 'NotoKufiArabic',
-    [ILanguageOptions.TA]: 'NotoSansTamil',
-  };
-  const addFonts = addCustomFonts(
-    fontNames[i18n.language as keyof typeof fontNames]
-  );
+  const addFonts = addCustomFonts(getFontName());
 
-  return { ...updatedAppTheme, font: addFonts };
+  return { ...updatedAppTheme, fonts: addFonts };
 };

@@ -3,17 +3,23 @@ import { useTranslation } from 'react-i18next';
 import { Button } from 'react-native-paper';
 import { Image, StyleSheet, View } from 'react-native';
 import { FormProvider, SubmitErrorHandler } from 'react-hook-form';
-import { useLoginForm, useStore } from '@shared';
+import { useLoginForm } from '@shared';
 import { MCountrySelect, MInputField } from '../common';
-import { useOrientation, useSaveForm } from '../hooks';
-import { ILoginFormField, IOrientationType } from '@types';
+import { useMStore, useOrientation } from '../hooks';
+import {
+  ILoginFormField,
+  IOrientationType,
+  IThemeOptions,
+  IUserSubmitHandlerType,
+} from '@types';
+import { encode } from '../utils/encode';
 import Logo from '../images/logo.png';
 
 export const SaveForm = () => {
-  const { form, onSubmit } = useLoginForm();
-  const { onSubmitForm } = useSaveForm(onSubmit);
-  const invalidUserMessage = useStore((state) => state.invalidUserMessage);
-  const resetInvalidUserMessage = useStore(
+  const { form, setUserNameError } = useLoginForm();
+  const invalidUserMessage = useMStore((state) => state.invalidUserMessage);
+  const setUserData = useMStore((state) => state.setUser);
+  const resetInvalidUserMessage = useMStore(
     (state) => state.resetInvalidUserMessage
   );
   const { t } = useTranslation();
@@ -23,7 +29,16 @@ export const SaveForm = () => {
 
   const onInvalid: SubmitErrorHandler<ILoginFormField> = (errors) => {
     //console.error(errors)
-    console.log(errors)
+    console.log(errors);
+  };
+
+  const onSubmitForm: IUserSubmitHandlerType = (data) => {
+    const payload = {
+      ...data,
+      password: encode(data.password),
+      country: data.country?.code as IThemeOptions,
+    };
+    setUserData(payload, () => {}, setUserNameError);
   };
 
   return (

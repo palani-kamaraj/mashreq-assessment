@@ -1,13 +1,13 @@
 import React from 'react';
 import { View, StyleSheet } from 'react-native';
+import { useTheme } from 'react-native-paper';
 import { Loader } from '@mobileLib';
 import { Header } from '../header';
-import { useTheme } from 'react-native-paper';
-import { useStore } from '@shared';
+import { useMStore } from '../../hooks';
 
 export const MLayout = ({ children }: { children: React.ReactNode }) => {
   const { colors } = useTheme();
-  const isLoggedInUser = useStore((state) => state.user?.username);
+  const isLoggedInUser = useMStore((state) => state.user?.username);
 
   return (
     <>
