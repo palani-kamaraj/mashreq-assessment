@@ -56,10 +56,10 @@ Implement similar validation as like web for creating new user to firebase with 
 
 | Country         | Color                                                            |
 | --------------- | ---------------------------------------------------------------- |
-| UAE ( AE )      | ![#ff5e00](https://via.placeholder.com/10/ff5e00?text=+) #ff5e00 |
-| INDIA ( IN )    | ![#9c27b0](https://via.placeholder.com/10/9c27b0?text=+) #9c27b0 |
-| SRILANKA ( LK ) | ![#1976d2](https://via.placeholder.com/10/1976d2?text=+) #1976d2 |
-| PAKSITAN ( PK ) | ![#2e7d32](https://via.placeholder.com/10/2e7d32?text=+) #2e7d32 |
+| UAE ( AE )      | ![#ff5e00](https://placehold.co/15x15/ff5e00/f03c15.png) `#ff5e00` |
+| INDIA ( IN )    | ![#9c27b0](https://placehold.co/15x15/9c27b0/f03c15.png) `#9c27b0` |
+| SRILANKA ( LK ) | ![#1976d2](https://placehold.co/15x15/1976d2/f03c15.png) `#1976d2`|
+| PAKSITAN ( PK ) | ![#2e7d32](https://placehold.co/15x15/2e7d32/f03c15.png) `#2e7d32`|
 
 ## Tech Stack
 
