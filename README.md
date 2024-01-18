@@ -125,6 +125,11 @@ or
 nx run mobile:run-ios
 ```
 
+## Graph
+You can run ```nx graph``` to get the project apps and application dependency structure
+
+<img width="589" alt="Screenshot 2024-01-18 at 11 17 49 PM" src="https://github.com/palani-kamaraj/mashreq-assessment/assets/39409056/82c5e118-b8bd-40d2-9844-7f4646bd5c9b">
+
 ## Screenshots
 
 ### Web
