@@ -5,7 +5,8 @@
     "change": "يتغير",
     "cancel": "يلغي",
     "new": "خلق جديد إبداع جديد",
-    "changePassword": "يتغير"
+    "changePassword": "يتغير",
+    "logout": "تسجيل خروج"
   },
   "apiCodes":{
     "INVALID_PASSWORD": "الرجاء إدخال كلمة السر الصحيحة.",

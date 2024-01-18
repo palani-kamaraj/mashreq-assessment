@@ -13,7 +13,8 @@
     "cancel": "Cancel",
     "save": "Save",
     "new": "Create New",
-    "changePassword": "Change"
+    "changePassword": "Change",
+    "logout": "Logout"
   },
   "apiCodes":{
     "INVALID_PASSWORD": "Please enter a valid password.",
@@ -49,7 +50,7 @@
     },
     "mobWelcome": {
       "title": "Welcome!",
-      "desc": "We're thrilled to have you here. To get started, please log in using your credentials on our website. Your journey awaits!",
+      "desc": "We're thrilled to have you here. To get started, please log in using your credentials on our website.",
       "desc1": "Your journey awaits!"
     },
     "welcome": {

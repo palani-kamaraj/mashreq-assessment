@@ -5,7 +5,8 @@
     "change": "மாற்றவும்",
     "cancel": "ரத்து செய்",
     "new": "புதிதாக உருவாக்கு",
-    "changePassword": "மாற்றவும்"
+    "changePassword": "மாற்றவும்",
+    "logout": "வெளியேறு"
   },
   "apiCodes": {
     "INVALID_PASSWORD": "சரியான கடவுச்சொல்லை உள்ளிடவும்.",

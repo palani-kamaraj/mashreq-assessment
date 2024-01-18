@@ -2,14 +2,12 @@ import { Resolver, useForm } from 'react-hook-form';
 import { ILoginFormField } from '@types';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { loginSchema } from '../validation/loginSchema';
-import { useLang } from './useLang';
 
 export const useLoginForm = () => {
-  const { countryOptions } = useLang();
   const initialValues: ILoginFormField = {
     username: '',
     password: '',
-    country: countryOptions[0],
+    country: undefined,
   };
   const form = useForm<ILoginFormField>({
     defaultValues: initialValues,
