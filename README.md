@@ -129,9 +129,8 @@ nx run mobile:run-ios
 
 ### Web
 ![Mashreq](https://github.com/palani-kamaraj/mashreq-assessment/assets/39409056/e6731652-cc03-4b8e-9096-ec4828f867fe)
-<img width="1728" alt="Screenshot 2024-01-18 at 10 34 24 PM" src="https://github.com/palani-kamaraj/mashreq-asses
+<img width="1728" alt="Screenshot 2024-01-18 at 10 34 24 PM" src="https://github.com/palani-kamaraj/mashreq-assessment/assets/39409056/d3243c55-004b-43a8-a194-4b804c4c3043">
 <img width="1477" alt="Screenshot 2024-01-18 at 10 44 30 PM" src="https://github.com/palani-kamaraj/mashreq-assessment/assets/39409056/f150f8f7-7258-4983-b5ec-d0751a7e22c1">
-sment/assets/39409056/d3243c55-004b-43a8-a194-4b804c4c3043">
 <img width="376" alt="Screenshot 2024-01-18 at 10 44 03 PM" src="https://github.com/palani-kamaraj/mashreq-assessment/assets/39409056/75086aa7-ada7-48e8-b3bf-04d347a941b2">
 <img width="371" alt="Screenshot 2024-01-18 at 10 44 11 PM" src="https://github.com/palani-kamaraj/mashreq-assessment/assets/39409056/3ee0b866-4f7d-439b-aa53-14dc5d5ead46">
 
