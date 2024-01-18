@@ -128,7 +128,31 @@ nx run mobile:run-ios
 ## Screenshots
 
 ### Web
+![Mashreq](https://github.com/palani-kamaraj/mashreq-assessment/assets/39409056/e6731652-cc03-4b8e-9096-ec4828f867fe)
+<img width="1728" alt="Screenshot 2024-01-18 at 10 34 24 PM" src="https://github.com/palani-kamaraj/mashreq-asses
+<img width="1477" alt="Screenshot 2024-01-18 at 10 44 30 PM" src="https://github.com/palani-kamaraj/mashreq-assessment/assets/39409056/f150f8f7-7258-4983-b5ec-d0751a7e22c1">
+sment/assets/39409056/d3243c55-004b-43a8-a194-4b804c4c3043">
+<img width="376" alt="Screenshot 2024-01-18 at 10 44 03 PM" src="https://github.com/palani-kamaraj/mashreq-assessment/assets/39409056/75086aa7-ada7-48e8-b3bf-04d347a941b2">
+<img width="371" alt="Screenshot 2024-01-18 at 10 44 11 PM" src="https://github.com/palani-kamaraj/mashreq-assessment/assets/39409056/3ee0b866-4f7d-439b-aa53-14dc5d5ead46">
 
-### Android
 
 ### IOS
+![Simulator Screenshot - iPhone 15 Pro Max - 2024-01-18 at 22 26 50](https://github.com/palani-kamaraj/mashreq-assessment/assets/39409056/34c13bf6-5930-421f-8936-5b9888048133)
+![Simulator Screenshot - iPhone 15 Pro Max - 2024-01-18 at 22 27 28](https://github.com/palani-kamaraj/mashreq-assessment/assets/39409056/7f04ee7b-e988-494b-9b67-4b9815dcb737)
+![Simulator Screenshot - iPhone 15 Pro Max - 2024-01-18 at 22 27 31](https://github.com/palani-kamaraj/mashreq-assessment/assets/39409056/4c8e335e-9c19-4a54-ae5d-a58990b2debc)
+![Simulator Screenshot - iPhone 15 Pro Max - 2024-01-18 at 22 27 35](https://github.com/palani-kamaraj/mashreq-assessment/assets/39409056/15376398-a987-4e14-9c60-5fde8885b29f)
+![Simulator Screenshot - iPhone 15 Pro Max - 2024-01-18 at 22 27 42](https://github.com/palani-kamaraj/mashreq-assessment/assets/39409056/40d0d132-d2b8-475c-85f7-1c9560bebb1e)
+![Simulator Screenshot - iPhone 15 Pro Max - 2024-01-18 at 22 27 46](https://github.com/palani-kamaraj/mashreq-assessment/assets/39409056/133137a0-341f-4584-9910-61406974b465)
+![Simulator Screenshot - iPhone 15 Pro Max - 2024-01-18 at 22 28 13](https://github.com/palani-kamaraj/mashreq-assessment/assets/39409056/230ab6eb-4e12-45e4-b872-f73868ec15a2)
+![Simulator Screenshot - iPhone 15 Pro Max - 2024-01-18 at 22 28 38](https://github.com/palani-kamaraj/mashreq-assessment/assets/39409056/97f31102-b3a6-4d1a-934e-3a9edd93c6ad)
+![Simulator Screenshot - iPhone 15 Pro Max - 2024-01-18 at 22 29 07](https://github.com/palani-kamaraj/mashreq-assessment/assets/39409056/c0b2d9fd-26b5-4a50-ae8a-15b8655d374c)
+
+
+### Android
+<img width="428" alt="Screenshot 2024-01-18 at 10 31 21 PM" src="https://github.com/palani-kamaraj/mashreq-assessment/assets/39409056/a83a69c0-6319-4e2f-9f71-852113a3e933">
+<img width="433" alt="Screenshot 2024-01-18 at 10 32 04 PM" src="https://github.com/palani-kamaraj/mashreq-assessment/assets/39409056/94e1a1ae-55f9-4b9a-8908-5305340df77c">
+<img width="436" alt="Screenshot 2024-01-18 at 10 32 44 PM" src="https://github.com/palani-kamaraj/mashreq-assessment/assets/39409056/854a8963-27ba-448d-9490-35dec53ef4c1">
+<img width="432" alt="Screenshot 2024-01-18 at 10 33 25 PM" src="https://github.com/palani-kamaraj/mashreq-assessment/assets/39409056/06c45941-a4da-4bd5-885c-c6099b49d979">
+<img width="432" alt="Screenshot 2024-01-18 at 10 33 50 PM" src="https://github.com/palani-kamaraj/mashreq-assessment/assets/39409056/f7737e02-cbf5-4eae-96f5-fba6d8b9dcfe">
+
+
