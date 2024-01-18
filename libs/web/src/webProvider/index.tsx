@@ -3,10 +3,8 @@ import { I18nextProvider } from 'react-i18next';
 import { CssBaseline, ThemeProvider } from '@mui/material';
 import i18nConfig from '../config/i18n.config';
 import { useGetWebTheme } from '../hooks/useGetWebTheme';
+import '../config/font-config';
 
-import '@fontsource/roboto';
-import '@fontsource-variable/noto-kufi-arabic';
-import '@fontsource-variable/noto-sans-tamil';
 
 export const WebProvider = ({ children }: { children: React.JSX.Element }) => {
   const webTheme = useGetWebTheme();

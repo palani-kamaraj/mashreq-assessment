@@ -2,6 +2,7 @@ export enum ILanguageOptions {
   EN = 'en',
   AR = 'ar',
   TA = 'ta',
+  HI = 'hi',
 }
 
 export enum IThemeOptions {

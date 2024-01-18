@@ -3,7 +3,8 @@
     "options": {
       "english": "English",
       "arabic": "عربي",
-      "tamil": "தமிழ்"
+      "tamil": "தமிழ்",
+      "hindi": "हिंदी"
     }
   },
   "actions": {

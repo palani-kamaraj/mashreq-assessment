@@ -1774,6 +1774,11 @@
   resolved "https://registry.yarnpkg.com/@fontsource-variable/noto-kufi-arabic/-/noto-kufi-arabic-5.0.16.tgz#993bb17c690b51389ee0f5e68b6bebe0b9bafced"
   integrity sha512-f26Jr4OgHBMLm6BOmklqPznfgJRHwJDZI0tOfnZaRr0R7Nw9si3RQBwy6kiPbXiOBCg1aOO/FQcEghS9Rr73yg==
 
+"@fontsource-variable/noto-sans-devanagari@^5.0.8":
+  version "5.0.8"
+  resolved "https://registry.yarnpkg.com/@fontsource-variable/noto-sans-devanagari/-/noto-sans-devanagari-5.0.8.tgz#2827bb1a67b1a15367eb4734046dd0faf83e3513"
+  integrity sha512-pzgIWD0UT3r4iVjx8riYvUIRB3OMvjXPTHqY8noWPjXFIVKdgGaApsLsotZD/uDAIHAtVmJz6zK9wuwjVyv0FQ==
+
 "@fontsource-variable/noto-sans-tamil@^5.0.8":
   version "5.0.8"
   resolved "https://registry.yarnpkg.com/@fontsource-variable/noto-sans-tamil/-/noto-sans-tamil-5.0.8.tgz#e12c09086a2c46d3e434437fb3b553d10b16a827"

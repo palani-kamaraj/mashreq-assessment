@@ -12,6 +12,7 @@
     "@emotion/react": "^11.11.3",
     "@emotion/styled": "^11.11.0",
     "@fontsource-variable/noto-kufi-arabic": "^5.0.16",
+    "@fontsource-variable/noto-sans-devanagari": "^5.0.8",
     "@fontsource-variable/noto-sans-tamil": "^5.0.8",
     "@fontsource/roboto": "^5.0.8",
     "@hookform/resolvers": "^3.3.4",

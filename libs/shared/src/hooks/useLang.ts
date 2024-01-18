@@ -8,6 +8,7 @@ export const useLang = () => {
     { value: ILanguageOptions.EN, label: t('lang.options.english') },
     { value: ILanguageOptions.AR, label: t('lang.options.arabic') },
     { value: ILanguageOptions.TA, label: t('lang.options.tamil') },
+    { value: ILanguageOptions.HI, label: t('lang.options.hindi') },
   ];
 
   const countryOptions: ICountryType[] = [
